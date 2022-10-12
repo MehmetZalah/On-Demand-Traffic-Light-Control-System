@@ -1,0 +1,1924 @@
+
+OnDemandTrafficLightControl.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007e8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000008  00800060  000007e8  0000087c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000005  00800068  00800068  00000884  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000884  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008b4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000268  00000000  00000000  000008f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001f3d  00000000  00000000  00000b58  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000d40  00000000  00000000  00002a95  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000123b  00000000  00000000  000037d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000388  00000000  00000000  00004a10  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000b2e  00000000  00000000  00004d98  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000009b7  00000000  00000000  000058c6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000001a8  00000000  00000000  0000627d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e8 ee       	ldi	r30, 0xE8	; 232
+  68:	f7 e0       	ldi	r31, 0x07	; 7
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 36       	cpi	r26, 0x68	; 104
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a8 e6       	ldi	r26, 0x68	; 104
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ad 36       	cpi	r26, 0x6D	; 109
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 c1 01 	call	0x382	; 0x382 <main>
+  8a:	0c 94 f2 03 	jmp	0x7e4	; 0x7e4 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <APP_Init>:
+ *	@param void
+ */
+void APP_Init(void)
+{
+	/* Initialize Time Module */
+	TIME_Init();
+  92:	0e 94 b7 03 	call	0x76e	; 0x76e <TIME_Init>
+		
+	/* Initialize User Button Module */
+	USER_Init();
+  96:	0e 94 6b 01 	call	0x2d6	; 0x2d6 <USER_Init>
+		
+	/* Initialize CARS Traffic Light Module */
+	CARS_Init();
+  9a:	0e 94 5f 00 	call	0xbe	; 0xbe <CARS_Init>
+		
+	/* Initialize PEDESTRIANS Traffic Light Module */
+	PEDESTRIANS_Init();
+  9e:	0e 94 e9 00 	call	0x1d2	; 0x1d2 <PEDESTRIANS_Init>
+  a2:	08 95       	ret
+
+000000a4 <APP_Start>:
+ *	@param void
+ */
+void APP_Start(void)
+{
+	/* Scan user button each 50ms */
+	USER_Update();
+  a4:	0e 94 72 01 	call	0x2e4	; 0x2e4 <USER_Update>
+	
+	/* Reduce power consumption by updating states every 1 sec */
+	if(TIME_OneSecondElapsed())
+  a8:	0e 94 dd 03 	call	0x7ba	; 0x7ba <TIME_OneSecondElapsed>
+  ac:	88 23       	and	r24, r24
+  ae:	21 f0       	breq	.+8      	; 0xb8 <APP_Start+0x14>
+	{
+		/* Check and UPDATE Cars Traffic Light each 1 sec */
+		CARS_UpdateTraffic();
+  b0:	0e 94 ab 00 	call	0x156	; 0x156 <CARS_UpdateTraffic>
+		
+		/* Check and UPDATE PEDESTRIANS Traffic Light each 1 sec */
+		PEDESTRIANS_UpdateTraffic();	
+  b4:	0e 94 36 01 	call	0x26c	; 0x26c <PEDESTRIANS_UpdateTraffic>
+	}
+	
+	/* 50ms timer update */
+	TIME_Update();
+  b8:	0e 94 ba 03 	call	0x774	; 0x774 <TIME_Update>
+  bc:	08 95       	ret
+
+000000be <CARS_Init>:
+ */
+void CARS_Init(void)
+{
+	/* Initialize Cars Traffic LEDs with state OFF */
+	
+	DISPLAY_Init(LED_CARS_GREEN, DISPLAY_STATE_OFF);
+  be:	60 e0       	ldi	r22, 0x00	; 0
+  c0:	80 e0       	ldi	r24, 0x00	; 0
+  c2:	0e 94 04 03 	call	0x608	; 0x608 <DISPLAY_Init>
+	DISPLAY_Init(LED_CARS_YELLOW, DISPLAY_STATE_OFF);
+  c6:	60 e0       	ldi	r22, 0x00	; 0
+  c8:	81 e0       	ldi	r24, 0x01	; 1
+  ca:	0e 94 04 03 	call	0x608	; 0x608 <DISPLAY_Init>
+	DISPLAY_Init(LED_CARS_RED, DISPLAY_STATE_OFF);
+  ce:	60 e0       	ldi	r22, 0x00	; 0
+  d0:	82 e0       	ldi	r24, 0x02	; 2
+  d2:	0e 94 04 03 	call	0x608	; 0x608 <DISPLAY_Init>
+  d6:	08 95       	ret
+
+000000d8 <CARS_RunState>:
+ */
+void CARS_RunState(tCARS_STATE_x CARS_STATE_x)
+{
+	/* Display LEDs ON/OFF Depending on CARS_STATE_x */
+	
+	switch(CARS_STATE_x)
+  d8:	81 30       	cpi	r24, 0x01	; 1
+  da:	71 f0       	breq	.+28     	; 0xf8 <CARS_RunState+0x20>
+  dc:	18 f0       	brcs	.+6      	; 0xe4 <CARS_RunState+0xc>
+  de:	82 30       	cpi	r24, 0x02	; 2
+  e0:	a9 f0       	breq	.+42     	; 0x10c <CARS_RunState+0x34>
+  e2:	08 95       	ret
+	{
+		case CARS_STATE_GREEN:
+		
+			DISPLAY_ON(LED_CARS_GREEN);
+  e4:	80 e0       	ldi	r24, 0x00	; 0
+  e6:	0e 94 af 03 	call	0x75e	; 0x75e <DISPLAY_ON>
+			DISPLAY_OFF(LED_CARS_YELLOW);
+  ea:	81 e0       	ldi	r24, 0x01	; 1
+  ec:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_OFF(LED_CARS_RED);
+  f0:	82 e0       	ldi	r24, 0x02	; 2
+  f2:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			break;
+  f6:	08 95       	ret
+			
+		case CARS_STATE_YELLOW:
+		
+			DISPLAY_OFF(LED_CARS_GREEN);
+  f8:	80 e0       	ldi	r24, 0x00	; 0
+  fa:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_Toggle(LED_CARS_YELLOW);
+  fe:	81 e0       	ldi	r24, 0x01	; 1
+ 100:	0e 94 83 03 	call	0x706	; 0x706 <DISPLAY_Toggle>
+			DISPLAY_OFF(LED_CARS_RED);
+ 104:	82 e0       	ldi	r24, 0x02	; 2
+ 106:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			break;
+ 10a:	08 95       	ret
+			
+		case CARS_STATE_RED:
+		
+			DISPLAY_OFF(LED_CARS_GREEN);
+ 10c:	80 e0       	ldi	r24, 0x00	; 0
+ 10e:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_OFF(LED_CARS_YELLOW);
+ 112:	81 e0       	ldi	r24, 0x01	; 1
+ 114:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_ON(LED_CARS_RED);
+ 118:	82 e0       	ldi	r24, 0x02	; 2
+ 11a:	0e 94 af 03 	call	0x75e	; 0x75e <DISPLAY_ON>
+ 11e:	08 95       	ret
+
+00000120 <CARS_SetState>:
+ *	@param CARS_STATE_x: CARS_STATE_GREEN,CARS_STATE_YELLOW,CARS_STATE_RED
+ */
+void CARS_SetState(tCARS_STATE_x CARS_STATE_x)
+{
+	/* Set Next State depending on Current & previous state*/	
+	switch(carsStateHandler.currentState)
+ 120:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 124:	91 30       	cpi	r25, 0x01	; 1
+ 126:	49 f0       	breq	.+18     	; 0x13a <CARS_SetState+0x1a>
+ 128:	18 f0       	brcs	.+6      	; 0x130 <CARS_SetState+0x10>
+ 12a:	92 30       	cpi	r25, 0x02	; 2
+ 12c:	79 f0       	breq	.+30     	; 0x14c <CARS_SetState+0x2c>
+ 12e:	08 95       	ret
+	{
+		case CARS_STATE_GREEN:
+			carsStateHandler.previousState = carsStateHandler.currentState;
+ 130:	e0 e6       	ldi	r30, 0x60	; 96
+ 132:	f0 e0       	ldi	r31, 0x00	; 0
+ 134:	90 83       	st	Z, r25
+			carsStateHandler.nextState = CARS_STATE_x;
+ 136:	82 83       	std	Z+2, r24	; 0x02
+			break;
+ 138:	08 95       	ret
+		
+		case CARS_STATE_YELLOW:
+		
+			if(currentMode == MODE_PEDESTRIANS)
+ 13a:	90 91 69 00 	lds	r25, 0x0069	; 0x800069 <currentMode>
+ 13e:	91 30       	cpi	r25, 0x01	; 1
+ 140:	11 f4       	brne	.+4      	; 0x146 <CARS_SetState+0x26>
+			{
+				carsStateHandler.previousState = CARS_STATE_GREEN;
+ 142:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+			}
+			carsStateHandler.nextState = CARS_STATE_x;
+ 146:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+			break;
+ 14a:	08 95       	ret
+			
+		case CARS_STATE_RED:
+			carsStateHandler.previousState = carsStateHandler.currentState;
+ 14c:	e0 e6       	ldi	r30, 0x60	; 96
+ 14e:	f0 e0       	ldi	r31, 0x00	; 0
+ 150:	90 83       	st	Z, r25
+			carsStateHandler.nextState = CARS_STATE_x;
+ 152:	82 83       	std	Z+2, r24	; 0x02
+ 154:	08 95       	ret
+
+00000156 <CARS_UpdateTraffic>:
+ *	@param void
+ */
+void CARS_UpdateTraffic(void)
+{
+	/* Change States after 5 Secs */
+	switch(carsStateHandler.nextState)
+ 156:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 15a:	81 30       	cpi	r24, 0x01	; 1
+ 15c:	99 f0       	breq	.+38     	; 0x184 <CARS_UpdateTraffic+0x2e>
+ 15e:	18 f0       	brcs	.+6      	; 0x166 <CARS_UpdateTraffic+0x10>
+ 160:	82 30       	cpi	r24, 0x02	; 2
+ 162:	29 f1       	breq	.+74     	; 0x1ae <CARS_UpdateTraffic+0x58>
+ 164:	08 95       	ret
+	{
+		case CARS_STATE_GREEN:
+		
+			carsStateHandler.currentState = CARS_STATE_GREEN;
+ 166:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+			
+			CARS_RunState(CARS_STATE_GREEN);
+ 16a:	80 e0       	ldi	r24, 0x00	; 0
+ 16c:	0e 94 6c 00 	call	0xd8	; 0xd8 <CARS_RunState>
+			
+			/* Switch to next State if 5 seconds passed */
+			if(TIME_SecondsElapsed() == FIVE_SECOND)
+ 170:	0e 94 ec 03 	call	0x7d8	; 0x7d8 <TIME_SecondsElapsed>
+ 174:	85 30       	cpi	r24, 0x05	; 5
+ 176:	49 f5       	brne	.+82     	; 0x1ca <CARS_UpdateTraffic+0x74>
+			{
+				CARS_SetState(CARS_STATE_YELLOW);				
+ 178:	81 e0       	ldi	r24, 0x01	; 1
+ 17a:	0e 94 90 00 	call	0x120	; 0x120 <CARS_SetState>
+				currentMode = MODE_NORMAL;
+ 17e:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <currentMode>
+ 182:	08 95       	ret
+			
+			break;
+		
+		case CARS_STATE_YELLOW:
+		
+			carsStateHandler.currentState = CARS_STATE_YELLOW;
+ 184:	81 e0       	ldi	r24, 0x01	; 1
+ 186:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+		
+			CARS_RunState(CARS_STATE_YELLOW);
+ 18a:	0e 94 6c 00 	call	0xd8	; 0xd8 <CARS_RunState>
+
+			/* Switch to next State if 5 seconds passed */
+			if(TIME_SecondsElapsed() == FIVE_SECOND)
+ 18e:	0e 94 ec 03 	call	0x7d8	; 0x7d8 <TIME_SecondsElapsed>
+ 192:	85 30       	cpi	r24, 0x05	; 5
+ 194:	d1 f4       	brne	.+52     	; 0x1ca <CARS_UpdateTraffic+0x74>
+			{	
+				/* Depend on previousState take next state */
+				tCARS_STATE_x nextState = (carsStateHandler.previousState == CARS_STATE_GREEN)? CARS_STATE_RED : CARS_STATE_GREEN;
+ 196:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 19a:	81 11       	cpse	r24, r1
+ 19c:	02 c0       	rjmp	.+4      	; 0x1a2 <CARS_UpdateTraffic+0x4c>
+ 19e:	82 e0       	ldi	r24, 0x02	; 2
+ 1a0:	01 c0       	rjmp	.+2      	; 0x1a4 <CARS_UpdateTraffic+0x4e>
+ 1a2:	80 e0       	ldi	r24, 0x00	; 0
+				CARS_SetState(nextState);
+ 1a4:	0e 94 90 00 	call	0x120	; 0x120 <CARS_SetState>
+				
+				currentMode = MODE_NORMAL;
+ 1a8:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <currentMode>
+ 1ac:	08 95       	ret
+			
+			break;
+			
+		case CARS_STATE_RED:
+			
+			carsStateHandler.currentState = CARS_STATE_RED;
+ 1ae:	82 e0       	ldi	r24, 0x02	; 2
+ 1b0:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+			
+			CARS_RunState(CARS_STATE_RED);
+ 1b4:	0e 94 6c 00 	call	0xd8	; 0xd8 <CARS_RunState>
+			
+			/* Switch to next State if 5 seconds passed */
+			if(TIME_SecondsElapsed() == FIVE_SECOND)
+ 1b8:	0e 94 ec 03 	call	0x7d8	; 0x7d8 <TIME_SecondsElapsed>
+ 1bc:	85 30       	cpi	r24, 0x05	; 5
+ 1be:	29 f4       	brne	.+10     	; 0x1ca <CARS_UpdateTraffic+0x74>
+			{
+				CARS_SetState(CARS_STATE_YELLOW);								
+ 1c0:	81 e0       	ldi	r24, 0x01	; 1
+ 1c2:	0e 94 90 00 	call	0x120	; 0x120 <CARS_SetState>
+				currentMode = MODE_NORMAL;
+ 1c6:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <currentMode>
+ 1ca:	08 95       	ret
+
+000001cc <CARS_GetState>:
+ *	@return tCARS_STATE_x: CARS_STATE_GREEN,CARS_STATE_YELLOW,CARS_STATE_RED
+ */
+tCARS_STATE_x CARS_GetState(void)
+{
+	return carsStateHandler.currentState;
+ 1cc:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1d0:	08 95       	ret
+
+000001d2 <PEDESTRIANS_Init>:
+ */
+void PEDESTRIANS_Init(void)
+{
+	/* Initialize PEDESTRIANS Traffic LEDs with state OFF */
+	
+	DISPLAY_Init(LED_PEDESTRIANS_GREEN, DISPLAY_STATE_OFF);
+ 1d2:	60 e0       	ldi	r22, 0x00	; 0
+ 1d4:	83 e0       	ldi	r24, 0x03	; 3
+ 1d6:	0e 94 04 03 	call	0x608	; 0x608 <DISPLAY_Init>
+	DISPLAY_Init(LED_PEDESTRIANS_YELLOW, DISPLAY_STATE_OFF);
+ 1da:	60 e0       	ldi	r22, 0x00	; 0
+ 1dc:	84 e0       	ldi	r24, 0x04	; 4
+ 1de:	0e 94 04 03 	call	0x608	; 0x608 <DISPLAY_Init>
+	DISPLAY_Init(LED_PEDESTRIANS_RED, DISPLAY_STATE_OFF);
+ 1e2:	60 e0       	ldi	r22, 0x00	; 0
+ 1e4:	85 e0       	ldi	r24, 0x05	; 5
+ 1e6:	0e 94 04 03 	call	0x608	; 0x608 <DISPLAY_Init>
+ 1ea:	08 95       	ret
+
+000001ec <PEDESTRIANS_RunState>:
+ */
+void PEDESTRIANS_RunState(tPEDESTRIANS_STATE_x PEDESTRIANS_STATE_x)
+{
+	/* Display LEDs ON/OFF Depending on PEDESTRIANS_STATE_x */
+
+	switch(PEDESTRIANS_STATE_x)
+ 1ec:	81 30       	cpi	r24, 0x01	; 1
+ 1ee:	71 f0       	breq	.+28     	; 0x20c <PEDESTRIANS_RunState+0x20>
+ 1f0:	18 f0       	brcs	.+6      	; 0x1f8 <PEDESTRIANS_RunState+0xc>
+ 1f2:	82 30       	cpi	r24, 0x02	; 2
+ 1f4:	a9 f0       	breq	.+42     	; 0x220 <PEDESTRIANS_RunState+0x34>
+ 1f6:	08 95       	ret
+	{
+		case PEDESTRIANS_STATE_GREEN:
+		
+			DISPLAY_ON(LED_PEDESTRIANS_GREEN);
+ 1f8:	83 e0       	ldi	r24, 0x03	; 3
+ 1fa:	0e 94 af 03 	call	0x75e	; 0x75e <DISPLAY_ON>
+			DISPLAY_OFF(LED_PEDESTRIANS_YELLOW);
+ 1fe:	84 e0       	ldi	r24, 0x04	; 4
+ 200:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_OFF(LED_PEDESTRIANS_RED);
+ 204:	85 e0       	ldi	r24, 0x05	; 5
+ 206:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			break;
+ 20a:	08 95       	ret
+		
+		case PEDESTRIANS_STATE_YELLOW:
+		
+			DISPLAY_OFF(LED_PEDESTRIANS_GREEN);
+ 20c:	83 e0       	ldi	r24, 0x03	; 3
+ 20e:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_Toggle(LED_PEDESTRIANS_YELLOW);
+ 212:	84 e0       	ldi	r24, 0x04	; 4
+ 214:	0e 94 83 03 	call	0x706	; 0x706 <DISPLAY_Toggle>
+			DISPLAY_OFF(LED_PEDESTRIANS_RED);
+ 218:	85 e0       	ldi	r24, 0x05	; 5
+ 21a:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			break;
+ 21e:	08 95       	ret
+			
+		case PEDESTRIANS_STATE_RED:
+		
+			DISPLAY_OFF(LED_PEDESTRIANS_GREEN);
+ 220:	83 e0       	ldi	r24, 0x03	; 3
+ 222:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_OFF(LED_PEDESTRIANS_YELLOW);
+ 226:	84 e0       	ldi	r24, 0x04	; 4
+ 228:	0e 94 b3 03 	call	0x766	; 0x766 <DISPLAY_OFF>
+			DISPLAY_ON(LED_PEDESTRIANS_RED);
+ 22c:	85 e0       	ldi	r24, 0x05	; 5
+ 22e:	0e 94 af 03 	call	0x75e	; 0x75e <DISPLAY_ON>
+ 232:	08 95       	ret
+
+00000234 <PEDESTRIANS_SetState>:
+ *
+ *	@param PEDESTRIANS_STATE_x: PEDESTRIANS_STATE_GREEN,PEDESTRIANS_STATE_YELLOW,PEDESTRIANS_STATE_RED
+ */
+void PEDESTRIANS_SetState(tPEDESTRIANS_STATE_x PEDESTRIANS_STATE_x)
+{
+	switch(pedestriansStateHandler.currentState)
+ 234:	90 91 64 00 	lds	r25, 0x0064	; 0x800064 <pedestriansStateHandler+0x1>
+ 238:	91 30       	cpi	r25, 0x01	; 1
+ 23a:	49 f0       	breq	.+18     	; 0x24e <PEDESTRIANS_SetState+0x1a>
+ 23c:	18 f0       	brcs	.+6      	; 0x244 <PEDESTRIANS_SetState+0x10>
+ 23e:	92 30       	cpi	r25, 0x02	; 2
+ 240:	81 f0       	breq	.+32     	; 0x262 <PEDESTRIANS_SetState+0x2e>
+ 242:	08 95       	ret
+	{
+		case PEDESTRIANS_STATE_GREEN:
+			pedestriansStateHandler.previousState = pedestriansStateHandler.currentState;
+ 244:	e3 e6       	ldi	r30, 0x63	; 99
+ 246:	f0 e0       	ldi	r31, 0x00	; 0
+ 248:	90 83       	st	Z, r25
+			pedestriansStateHandler.nextState = PEDESTRIANS_STATE_x;
+ 24a:	82 83       	std	Z+2, r24	; 0x02
+			break;
+ 24c:	08 95       	ret
+		
+		case PEDESTRIANS_STATE_YELLOW:
+			if(currentMode == MODE_PEDESTRIANS)
+ 24e:	90 91 69 00 	lds	r25, 0x0069	; 0x800069 <currentMode>
+ 252:	91 30       	cpi	r25, 0x01	; 1
+ 254:	19 f4       	brne	.+6      	; 0x25c <PEDESTRIANS_SetState+0x28>
+			{
+				pedestriansStateHandler.previousState = PEDESTRIANS_STATE_RED;
+ 256:	92 e0       	ldi	r25, 0x02	; 2
+ 258:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <pedestriansStateHandler>
+			}
+			pedestriansStateHandler.nextState = PEDESTRIANS_STATE_x;
+ 25c:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <pedestriansStateHandler+0x2>
+			break;
+ 260:	08 95       	ret
+		
+		case PEDESTRIANS_STATE_RED:
+			pedestriansStateHandler.previousState = pedestriansStateHandler.currentState;
+ 262:	e3 e6       	ldi	r30, 0x63	; 99
+ 264:	f0 e0       	ldi	r31, 0x00	; 0
+ 266:	90 83       	st	Z, r25
+			pedestriansStateHandler.nextState = PEDESTRIANS_STATE_x;
+ 268:	82 83       	std	Z+2, r24	; 0x02
+ 26a:	08 95       	ret
+
+0000026c <PEDESTRIANS_UpdateTraffic>:
+ *	@param void
+ */
+void PEDESTRIANS_UpdateTraffic(void)
+{
+	/* Change States after 5 Secs */
+	switch(pedestriansStateHandler.nextState)
+ 26c:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <pedestriansStateHandler+0x2>
+ 270:	81 30       	cpi	r24, 0x01	; 1
+ 272:	89 f0       	breq	.+34     	; 0x296 <PEDESTRIANS_UpdateTraffic+0x2a>
+ 274:	18 f0       	brcs	.+6      	; 0x27c <PEDESTRIANS_UpdateTraffic+0x10>
+ 276:	82 30       	cpi	r24, 0x02	; 2
+ 278:	09 f1       	breq	.+66     	; 0x2bc <PEDESTRIANS_UpdateTraffic+0x50>
+ 27a:	08 95       	ret
+	{
+		case PEDESTRIANS_STATE_GREEN:
+		
+			pedestriansStateHandler.currentState = PEDESTRIANS_STATE_GREEN;
+ 27c:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <pedestriansStateHandler+0x1>
+		
+			PEDESTRIANS_RunState(PEDESTRIANS_STATE_GREEN);
+ 280:	80 e0       	ldi	r24, 0x00	; 0
+ 282:	0e 94 f6 00 	call	0x1ec	; 0x1ec <PEDESTRIANS_RunState>
+			
+			/* Switch to next State if 5 seconds passed */
+			if(TIME_SecondsElapsed() == FIVE_SECOND)
+ 286:	0e 94 ec 03 	call	0x7d8	; 0x7d8 <TIME_SecondsElapsed>
+ 28a:	85 30       	cpi	r24, 0x05	; 5
+ 28c:	19 f5       	brne	.+70     	; 0x2d4 <PEDESTRIANS_UpdateTraffic+0x68>
+			{
+				PEDESTRIANS_SetState(PEDESTRIANS_STATE_YELLOW);
+ 28e:	81 e0       	ldi	r24, 0x01	; 1
+ 290:	0e 94 1a 01 	call	0x234	; 0x234 <PEDESTRIANS_SetState>
+ 294:	08 95       	ret
+		
+			break;
+		
+		case PEDESTRIANS_STATE_YELLOW:
+		
+			pedestriansStateHandler.currentState = PEDESTRIANS_STATE_YELLOW;
+ 296:	81 e0       	ldi	r24, 0x01	; 1
+ 298:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <pedestriansStateHandler+0x1>
+			//pedestriansStateHandler.secCounter++;
+		
+			PEDESTRIANS_RunState(PEDESTRIANS_STATE_YELLOW);
+ 29c:	0e 94 f6 00 	call	0x1ec	; 0x1ec <PEDESTRIANS_RunState>
+			
+			/* Switch to next State if 5 seconds passed */
+			if(TIME_SecondsElapsed() == FIVE_SECOND)
+ 2a0:	0e 94 ec 03 	call	0x7d8	; 0x7d8 <TIME_SecondsElapsed>
+ 2a4:	85 30       	cpi	r24, 0x05	; 5
+ 2a6:	b1 f4       	brne	.+44     	; 0x2d4 <PEDESTRIANS_UpdateTraffic+0x68>
+			{
+				/* Depend on previousState take next state */
+				tPEDESTRIANS_STATE_x nextState = (pedestriansStateHandler.previousState == PEDESTRIANS_STATE_GREEN)? PEDESTRIANS_STATE_RED : PEDESTRIANS_STATE_GREEN;
+ 2a8:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <pedestriansStateHandler>
+ 2ac:	81 11       	cpse	r24, r1
+ 2ae:	02 c0       	rjmp	.+4      	; 0x2b4 <PEDESTRIANS_UpdateTraffic+0x48>
+ 2b0:	82 e0       	ldi	r24, 0x02	; 2
+ 2b2:	01 c0       	rjmp	.+2      	; 0x2b6 <PEDESTRIANS_UpdateTraffic+0x4a>
+ 2b4:	80 e0       	ldi	r24, 0x00	; 0
+				PEDESTRIANS_SetState(nextState);
+ 2b6:	0e 94 1a 01 	call	0x234	; 0x234 <PEDESTRIANS_SetState>
+ 2ba:	08 95       	ret
+		
+			break;
+		
+		case PEDESTRIANS_STATE_RED:
+		
+			pedestriansStateHandler.currentState = PEDESTRIANS_STATE_RED;
+ 2bc:	82 e0       	ldi	r24, 0x02	; 2
+ 2be:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <pedestriansStateHandler+0x1>
+			
+			/* Switch to next State if 5 seconds passed */
+			PEDESTRIANS_RunState(PEDESTRIANS_STATE_RED);
+ 2c2:	0e 94 f6 00 	call	0x1ec	; 0x1ec <PEDESTRIANS_RunState>
+			
+			if(TIME_SecondsElapsed() == FIVE_SECOND)
+ 2c6:	0e 94 ec 03 	call	0x7d8	; 0x7d8 <TIME_SecondsElapsed>
+ 2ca:	85 30       	cpi	r24, 0x05	; 5
+ 2cc:	19 f4       	brne	.+6      	; 0x2d4 <PEDESTRIANS_UpdateTraffic+0x68>
+			{
+				PEDESTRIANS_SetState(PEDESTRIANS_STATE_YELLOW);
+ 2ce:	81 e0       	ldi	r24, 0x01	; 1
+ 2d0:	0e 94 1a 01 	call	0x234	; 0x234 <PEDESTRIANS_SetState>
+ 2d4:	08 95       	ret
+
+000002d6 <USER_Init>:
+ *	@param void
+ */
+void USER_Init(void)
+{
+	/* Initialize USER Switch */
+	SWITCH_Init(SWITCH_PEDESTRIANS);
+ 2d6:	80 e0       	ldi	r24, 0x00	; 0
+ 2d8:	0e 94 f0 02 	call	0x5e0	; 0x5e0 <SWITCH_Init>
+ 2dc:	08 95       	ret
+
+000002de <USER_longPressedStatus>:
+ *	@return tUSER_LONG_PRESSED_x: USER_LONG_PRESSED_CLEARED, USER_LONG_PRESSED_SET
+ */
+tUSER_LONG_PRESSED_x USER_longPressedStatus(void)
+{
+	return longPressedStatus;
+ 2de:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <__data_end>
+ 2e2:	08 95       	ret
+
+000002e4 <USER_Update>:
+ *	@param void
+ */
+void USER_Update(void)
+{	
+	/* Make sure long pressed switch is cleared*/
+	if(USER_longPressedStatus() == USER_LONG_PRESSED_CLEARED)
+ 2e4:	0e 94 6f 01 	call	0x2de	; 0x2de <USER_longPressedStatus>
+ 2e8:	81 11       	cpse	r24, r1
+ 2ea:	2a c0       	rjmp	.+84     	; 0x340 <USER_Update+0x5c>
+	{
+		/* Check if USER Button is pressed */
+		if(SWITCH_GetState(SWITCH_PEDESTRIANS) == SWITCH_STATE_PRESSED && currentMode == MODE_NORMAL)
+ 2ec:	0e 94 f7 02 	call	0x5ee	; 0x5ee <SWITCH_GetState>
+ 2f0:	81 30       	cpi	r24, 0x01	; 1
+ 2f2:	69 f5       	brne	.+90     	; 0x34e <USER_Update+0x6a>
+ 2f4:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <currentMode>
+ 2f8:	81 11       	cpse	r24, r1
+ 2fa:	29 c0       	rjmp	.+82     	; 0x34e <USER_Update+0x6a>
+		{
+			/* Change current mode to PEDESTRIANS Mode */
+			currentMode = MODE_PEDESTRIANS;
+ 2fc:	81 e0       	ldi	r24, 0x01	; 1
+ 2fe:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <currentMode>
+			
+			/* Consider it as longPress unless the button is released */
+			longPressedStatus = USER_LONG_PRESSED_SET;
+ 302:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__data_end>
+			
+			/* Get Current CARS State */
+			tCARS_STATE_x CARS_STATE_x = CARS_GetState();
+ 306:	0e 94 e6 00 	call	0x1cc	; 0x1cc <CARS_GetState>
+			
+			/* Take an action depending on CARS State */
+			switch(CARS_STATE_x)
+ 30a:	81 30       	cpi	r24, 0x01	; 1
+ 30c:	69 f0       	breq	.+26     	; 0x328 <USER_Update+0x44>
+ 30e:	18 f0       	brcs	.+6      	; 0x316 <USER_Update+0x32>
+ 310:	82 30       	cpi	r24, 0x02	; 2
+ 312:	99 f0       	breq	.+38     	; 0x33a <USER_Update+0x56>
+ 314:	08 95       	ret
+			{
+				case CARS_STATE_GREEN:
+				
+					/* Reset Time */
+					TIME_ResetSeconds();
+ 316:	0e 94 ef 03 	call	0x7de	; 0x7de <TIME_ResetSeconds>
+														
+					/* Update Cars Traffic States */
+					CARS_SetState(CARS_STATE_YELLOW);
+ 31a:	81 e0       	ldi	r24, 0x01	; 1
+ 31c:	0e 94 90 00 	call	0x120	; 0x120 <CARS_SetState>
+
+					/* Update Pedestrians Traffic States */
+					PEDESTRIANS_SetState(PEDESTRIANS_STATE_YELLOW);
+ 320:	81 e0       	ldi	r24, 0x01	; 1
+ 322:	0e 94 1a 01 	call	0x234	; 0x234 <PEDESTRIANS_SetState>
+
+					break;
+ 326:	08 95       	ret
+					
+				case CARS_STATE_YELLOW:
+				
+					/* Reset Time */
+					TIME_ResetSeconds();
+ 328:	0e 94 ef 03 	call	0x7de	; 0x7de <TIME_ResetSeconds>
+								
+					/* Update Cars Traffic States */
+					CARS_SetState(CARS_STATE_YELLOW);
+ 32c:	81 e0       	ldi	r24, 0x01	; 1
+ 32e:	0e 94 90 00 	call	0x120	; 0x120 <CARS_SetState>
+										
+					/* Update Pedestrians Traffic States */
+					PEDESTRIANS_SetState(PEDESTRIANS_STATE_YELLOW);
+ 332:	81 e0       	ldi	r24, 0x01	; 1
+ 334:	0e 94 1a 01 	call	0x234	; 0x234 <PEDESTRIANS_SetState>
+
+					break;
+ 338:	08 95       	ret
+					
+					case CARS_STATE_RED:
+					
+					/* Reset Time */
+					TIME_ResetSeconds();
+ 33a:	0e 94 ef 03 	call	0x7de	; 0x7de <TIME_ResetSeconds>
+					
+					break;
+ 33e:	08 95       	ret
+		}
+	}
+	else
+	{
+		/* clear long pressed status if switch is released */
+		if(SWITCH_GetState(SWITCH_PEDESTRIANS) == SWITCH_STATE_RELEASED)
+ 340:	80 e0       	ldi	r24, 0x00	; 0
+ 342:	0e 94 f7 02 	call	0x5ee	; 0x5ee <SWITCH_GetState>
+ 346:	81 11       	cpse	r24, r1
+ 348:	02 c0       	rjmp	.+4      	; 0x34e <USER_Update+0x6a>
+		{
+			longPressedStatus = USER_LONG_PRESSED_CLEARED;
+ 34a:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <__data_end>
+ 34e:	08 95       	ret
+
+00000350 <LED_Init>:
+ *	@return tLED_STATUS_x: LED_STATUS_SUCCESS, LED_STATUS_ERROR
+ */
+tLED_STATUS_x LED_Init(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* Initialize PORT PIN as OUTPUT */
+	if(GPIO_InitPin(PORT_x,PORT_PIN_n,GPIO_DIR_OUTPUT) == GPIO_STATUS_SUCCESS)
+ 350:	41 e0       	ldi	r20, 0x01	; 1
+ 352:	0e 94 c6 01 	call	0x38c	; 0x38c <GPIO_InitPin>
+ 356:	81 11       	cpse	r24, r1
+	{
+		return LED_STATUS_SUCCESS;
+	}
+	else
+	{
+		return LED_STATUS_ERROR;
+ 358:	81 e0       	ldi	r24, 0x01	; 1
+	}
+}
+ 35a:	08 95       	ret
+
+0000035c <LED_SetState>:
+ *	@return tLED_STATUS_x: LED_STATUS_SUCCESS, LED_STATUS_ERROR
+ */
+tLED_STATUS_x LED_SetState(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n,tGPIO_STATE_x GPIO_STATE_x)
+{
+	/* Set PORT PIN State depending on GPIO_STATE_x */
+	if(GPIO_WritePIN(PORT_x,PORT_PIN_n,GPIO_STATE_x) == GPIO_STATUS_SUCCESS)
+ 35c:	0e 94 35 02 	call	0x46a	; 0x46a <GPIO_WritePIN>
+ 360:	81 11       	cpse	r24, r1
+	{
+		return LED_STATUS_SUCCESS;
+	}
+	else
+	{
+		return LED_STATUS_ERROR;
+ 362:	81 e0       	ldi	r24, 0x01	; 1
+	}
+}
+ 364:	08 95       	ret
+
+00000366 <LED_Toggle>:
+ *	@return tLED_STATUS_x: LED_STATUS_SUCCESS, LED_STATUS_ERROR
+ */
+tLED_STATUS_x LED_Toggle(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* Toggle PORT PIN */
+	if(GPIO_TogglePIN(PORT_x, PORT_PIN_n) == GPIO_STATUS_SUCCESS)
+ 366:	0e 94 b7 02 	call	0x56e	; 0x56e <GPIO_TogglePIN>
+ 36a:	81 11       	cpse	r24, r1
+	{
+		return LED_STATUS_SUCCESS;
+	}
+	else
+	{
+		return LED_STATUS_ERROR;
+ 36c:	81 e0       	ldi	r24, 0x01	; 1
+	}
+ 36e:	08 95       	ret
+
+00000370 <BTN_Init>:
+ *	@return tBTN_STATUS_x: 	BTN_STATUS_SUCCESS, BTN_STATUS_ERROR
+ */
+tBTN_STATUS_x BTN_Init(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* Initialize PORT PIN as INPUT */
+	if(GPIO_InitPin(PORT_x, PORT_PIN_n, GPIO_DIR_INPUT) == GPIO_STATUS_SUCCESS)
+ 370:	40 e0       	ldi	r20, 0x00	; 0
+ 372:	0e 94 c6 01 	call	0x38c	; 0x38c <GPIO_InitPin>
+ 376:	81 11       	cpse	r24, r1
+	{
+		return BTN_STATUS_SUCCESS;
+	}
+	else
+	{
+		return BTN_STATUS_ERROR;
+ 378:	81 e0       	ldi	r24, 0x01	; 1
+	}
+}
+ 37a:	08 95       	ret
+
+0000037c <BTN_GetState>:
+ *	@return tGPIO_STATE_x: GPIO_STATE_LOW, GPIO_STATE_HIGH, GPIO_STATE_UNDEFINED
+ */
+tGPIO_STATE_x BTN_GetState(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* Return PORT PIN State HIGH/LOW */
+	return GPIO_ReadPIN(PORT_x, PORT_PIN_n);
+ 37c:	0e 94 84 02 	call	0x508	; 0x508 <GPIO_ReadPIN>
+ 380:	08 95       	ret
+
+00000382 <main>:
+int main(void)
+{
+#ifdef RUN_APP
+
+	/* Initialize App Modules*/
+	APP_Init();
+ 382:	0e 94 49 00 	call	0x92	; 0x92 <APP_Init>
+	
+    while(1) 
+    {
+		/* Run App */
+		APP_Start();
+ 386:	0e 94 52 00 	call	0xa4	; 0xa4 <APP_Start>
+ 38a:	fd cf       	rjmp	.-6      	; 0x386 <main+0x4>
+
+0000038c <GPIO_InitPin>:
+ *	@return tGPIO_STATUS_x: GPIO_STATUS_SUCCESS, GPIO_STATUS_ERROR_PORT, GPIO_STATUS_ERROR_PIN, GPIO_STATUS_ERROR_DIR, GPIO_STATUS_ERROR_STATE
+ */
+tGPIO_STATUS_x GPIO_InitPin(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n, tGPIO_DIR_x GPIO_DIR_x)
+{
+	/* GPIO_DIR_x ERROR Handling */
+	if(GPIO_DIR_x != GPIO_DIR_INPUT && GPIO_DIR_x != GPIO_DIR_OUTPUT)
+ 38c:	42 30       	cpi	r20, 0x02	; 2
+ 38e:	08 f0       	brcs	.+2      	; 0x392 <GPIO_InitPin+0x6>
+ 390:	60 c0       	rjmp	.+192    	; 0x452 <__EEPROM_REGION_LENGTH__+0x52>
+		return GPIO_STATUS_ERROR_DIR;
+	
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+ 392:	68 30       	cpi	r22, 0x08	; 8
+ 394:	08 f0       	brcs	.+2      	; 0x398 <GPIO_InitPin+0xc>
+ 396:	5f c0       	rjmp	.+190    	; 0x456 <__EEPROM_REGION_LENGTH__+0x56>
+		return GPIO_STATUS_ERROR_PIN;
+	
+	/* Initialize PORT PIN as GPIO_DIR_x */
+	switch(PORT_x)
+ 398:	81 30       	cpi	r24, 0x01	; 1
+ 39a:	09 f1       	breq	.+66     	; 0x3de <GPIO_InitPin+0x52>
+ 39c:	18 f0       	brcs	.+6      	; 0x3a4 <GPIO_InitPin+0x18>
+ 39e:	82 30       	cpi	r24, 0x02	; 2
+ 3a0:	d9 f1       	breq	.+118    	; 0x418 <__EEPROM_REGION_LENGTH__+0x18>
+ 3a2:	5b c0       	rjmp	.+182    	; 0x45a <__EEPROM_REGION_LENGTH__+0x5a>
+	{
+		case PORT_A:
+			if(GPIO_DIR_x == GPIO_DIR_OUTPUT)
+ 3a4:	41 30       	cpi	r20, 0x01	; 1
+ 3a6:	61 f4       	brne	.+24     	; 0x3c0 <GPIO_InitPin+0x34>
+			{
+				// Set (1) to (DIRECTION_REGISTER_A Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_A |= (1<<(PORT_PIN_n));
+ 3a8:	2a b3       	in	r18, 0x1a	; 26
+ 3aa:	81 e0       	ldi	r24, 0x01	; 1
+ 3ac:	90 e0       	ldi	r25, 0x00	; 0
+ 3ae:	02 c0       	rjmp	.+4      	; 0x3b4 <GPIO_InitPin+0x28>
+ 3b0:	88 0f       	add	r24, r24
+ 3b2:	99 1f       	adc	r25, r25
+ 3b4:	6a 95       	dec	r22
+ 3b6:	e2 f7       	brpl	.-8      	; 0x3b0 <GPIO_InitPin+0x24>
+ 3b8:	82 2b       	or	r24, r18
+ 3ba:	8a bb       	out	0x1a, r24	; 26
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 3bc:	80 e0       	ldi	r24, 0x00	; 0
+ 3be:	08 95       	ret
+			if(GPIO_DIR_x == GPIO_DIR_OUTPUT)
+			{
+				// Set (1) to (DIRECTION_REGISTER_A Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_A |= (1<<(PORT_PIN_n));
+			}
+			else if(GPIO_DIR_x == GPIO_DIR_INPUT)
+ 3c0:	41 11       	cpse	r20, r1
+ 3c2:	4d c0       	rjmp	.+154    	; 0x45e <__EEPROM_REGION_LENGTH__+0x5e>
+			{
+				// Set (0) to (DIRECTION_REGISTER_A Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_A &= ~(1<<(PORT_PIN_n));
+ 3c4:	2a b3       	in	r18, 0x1a	; 26
+ 3c6:	81 e0       	ldi	r24, 0x01	; 1
+ 3c8:	90 e0       	ldi	r25, 0x00	; 0
+ 3ca:	02 c0       	rjmp	.+4      	; 0x3d0 <GPIO_InitPin+0x44>
+ 3cc:	88 0f       	add	r24, r24
+ 3ce:	99 1f       	adc	r25, r25
+ 3d0:	6a 95       	dec	r22
+ 3d2:	e2 f7       	brpl	.-8      	; 0x3cc <GPIO_InitPin+0x40>
+ 3d4:	80 95       	com	r24
+ 3d6:	82 23       	and	r24, r18
+ 3d8:	8a bb       	out	0x1a, r24	; 26
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 3da:	80 e0       	ldi	r24, 0x00	; 0
+ 3dc:	08 95       	ret
+			}
+			break;
+		
+		case PORT_B:
+
+			if(GPIO_DIR_x == GPIO_DIR_OUTPUT)
+ 3de:	41 30       	cpi	r20, 0x01	; 1
+ 3e0:	61 f4       	brne	.+24     	; 0x3fa <GPIO_InitPin+0x6e>
+			{
+				// Set (1) to (DIRECTION_REGISTER_B Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_B |=(1<<(PORT_PIN_n));
+ 3e2:	27 b3       	in	r18, 0x17	; 23
+ 3e4:	81 e0       	ldi	r24, 0x01	; 1
+ 3e6:	90 e0       	ldi	r25, 0x00	; 0
+ 3e8:	02 c0       	rjmp	.+4      	; 0x3ee <GPIO_InitPin+0x62>
+ 3ea:	88 0f       	add	r24, r24
+ 3ec:	99 1f       	adc	r25, r25
+ 3ee:	6a 95       	dec	r22
+ 3f0:	e2 f7       	brpl	.-8      	; 0x3ea <GPIO_InitPin+0x5e>
+ 3f2:	82 2b       	or	r24, r18
+ 3f4:	87 bb       	out	0x17, r24	; 23
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 3f6:	80 e0       	ldi	r24, 0x00	; 0
+ 3f8:	08 95       	ret
+			if(GPIO_DIR_x == GPIO_DIR_OUTPUT)
+			{
+				// Set (1) to (DIRECTION_REGISTER_B Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_B |=(1<<(PORT_PIN_n));
+			}
+			else if(GPIO_DIR_x == GPIO_DIR_INPUT)
+ 3fa:	41 11       	cpse	r20, r1
+ 3fc:	32 c0       	rjmp	.+100    	; 0x462 <__EEPROM_REGION_LENGTH__+0x62>
+			{
+				// Set (0) to (DIRECTION_REGISTER_B Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_B &=~(1<<(PORT_PIN_n));
+ 3fe:	27 b3       	in	r18, 0x17	; 23
+ 400:	81 e0       	ldi	r24, 0x01	; 1
+ 402:	90 e0       	ldi	r25, 0x00	; 0
+ 404:	02 c0       	rjmp	.+4      	; 0x40a <__EEPROM_REGION_LENGTH__+0xa>
+ 406:	88 0f       	add	r24, r24
+ 408:	99 1f       	adc	r25, r25
+ 40a:	6a 95       	dec	r22
+ 40c:	e2 f7       	brpl	.-8      	; 0x406 <__EEPROM_REGION_LENGTH__+0x6>
+ 40e:	80 95       	com	r24
+ 410:	82 23       	and	r24, r18
+ 412:	87 bb       	out	0x17, r24	; 23
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 414:	80 e0       	ldi	r24, 0x00	; 0
+ 416:	08 95       	ret
+			}
+			break;
+		
+		case PORT_D:
+		
+			if(GPIO_DIR_x == GPIO_DIR_OUTPUT)
+ 418:	41 30       	cpi	r20, 0x01	; 1
+ 41a:	61 f4       	brne	.+24     	; 0x434 <__EEPROM_REGION_LENGTH__+0x34>
+			{
+				// Set (1) to (DIRECTION_REGISTER_D Register) (PORT_PIN_n) bit			
+				DIRECTION_REGISTER_D |=(1<<(PORT_PIN_n));
+ 41c:	21 b3       	in	r18, 0x11	; 17
+ 41e:	81 e0       	ldi	r24, 0x01	; 1
+ 420:	90 e0       	ldi	r25, 0x00	; 0
+ 422:	02 c0       	rjmp	.+4      	; 0x428 <__EEPROM_REGION_LENGTH__+0x28>
+ 424:	88 0f       	add	r24, r24
+ 426:	99 1f       	adc	r25, r25
+ 428:	6a 95       	dec	r22
+ 42a:	e2 f7       	brpl	.-8      	; 0x424 <__EEPROM_REGION_LENGTH__+0x24>
+ 42c:	82 2b       	or	r24, r18
+ 42e:	81 bb       	out	0x11, r24	; 17
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 430:	80 e0       	ldi	r24, 0x00	; 0
+ 432:	08 95       	ret
+			if(GPIO_DIR_x == GPIO_DIR_OUTPUT)
+			{
+				// Set (1) to (DIRECTION_REGISTER_D Register) (PORT_PIN_n) bit			
+				DIRECTION_REGISTER_D |=(1<<(PORT_PIN_n));
+			}
+			else if(GPIO_DIR_x == GPIO_DIR_INPUT)
+ 434:	41 11       	cpse	r20, r1
+ 436:	17 c0       	rjmp	.+46     	; 0x466 <__EEPROM_REGION_LENGTH__+0x66>
+			{
+				// Set (0) to (DIRECTION_REGISTER_D Register) (PORT_PIN_n) bit
+				DIRECTION_REGISTER_D &=~(1<<(PORT_PIN_n));
+ 438:	21 b3       	in	r18, 0x11	; 17
+ 43a:	81 e0       	ldi	r24, 0x01	; 1
+ 43c:	90 e0       	ldi	r25, 0x00	; 0
+ 43e:	02 c0       	rjmp	.+4      	; 0x444 <__EEPROM_REGION_LENGTH__+0x44>
+ 440:	88 0f       	add	r24, r24
+ 442:	99 1f       	adc	r25, r25
+ 444:	6a 95       	dec	r22
+ 446:	e2 f7       	brpl	.-8      	; 0x440 <__EEPROM_REGION_LENGTH__+0x40>
+ 448:	80 95       	com	r24
+ 44a:	82 23       	and	r24, r18
+ 44c:	81 bb       	out	0x11, r24	; 17
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 44e:	80 e0       	ldi	r24, 0x00	; 0
+ 450:	08 95       	ret
+ */
+tGPIO_STATUS_x GPIO_InitPin(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n, tGPIO_DIR_x GPIO_DIR_x)
+{
+	/* GPIO_DIR_x ERROR Handling */
+	if(GPIO_DIR_x != GPIO_DIR_INPUT && GPIO_DIR_x != GPIO_DIR_OUTPUT)
+		return GPIO_STATUS_ERROR_DIR;
+ 452:	83 e0       	ldi	r24, 0x03	; 3
+ 454:	08 95       	ret
+	
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+		return GPIO_STATUS_ERROR_PIN;
+ 456:	82 e0       	ldi	r24, 0x02	; 2
+ 458:	08 95       	ret
+			}
+			break;
+			
+		default:
+		
+			return GPIO_STATUS_ERROR_PORT;
+ 45a:	81 e0       	ldi	r24, 0x01	; 1
+ 45c:	08 95       	ret
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 45e:	80 e0       	ldi	r24, 0x00	; 0
+ 460:	08 95       	ret
+ 462:	80 e0       	ldi	r24, 0x00	; 0
+ 464:	08 95       	ret
+ 466:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 468:	08 95       	ret
+
+0000046a <GPIO_WritePIN>:
+ *	@return tGPIO_STATUS_x: GPIO_STATUS_SUCCESS, GPIO_STATUS_ERROR_PORT, GPIO_STATUS_ERROR_PIN, GPIO_STATUS_ERROR_DIR, GPIO_STATUS_ERROR_STATE
+ */
+tGPIO_STATUS_x GPIO_WritePIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n, tGPIO_STATE_x GPIO_STATE_x)
+{
+	/* GPIO_STATE_x ERROR Handling */
+	if(GPIO_STATE_x != GPIO_STATE_LOW && GPIO_STATE_x != GPIO_STATE_HIGH)
+ 46a:	42 30       	cpi	r20, 0x02	; 2
+ 46c:	08 f0       	brcs	.+2      	; 0x470 <GPIO_WritePIN+0x6>
+ 46e:	42 c0       	rjmp	.+132    	; 0x4f4 <GPIO_WritePIN+0x8a>
+		return GPIO_STATUS_ERROR_STATE;
+		
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+ 470:	68 30       	cpi	r22, 0x08	; 8
+ 472:	08 f0       	brcs	.+2      	; 0x476 <GPIO_WritePIN+0xc>
+ 474:	41 c0       	rjmp	.+130    	; 0x4f8 <GPIO_WritePIN+0x8e>
+		return GPIO_STATUS_ERROR_PIN;
+	
+	/* Set PORT PIN as GPIO_STATE_x */
+	switch(PORT_x)
+ 476:	88 23       	and	r24, r24
+ 478:	19 f0       	breq	.+6      	; 0x480 <GPIO_WritePIN+0x16>
+ 47a:	81 30       	cpi	r24, 0x01	; 1
+ 47c:	f1 f0       	breq	.+60     	; 0x4ba <GPIO_WritePIN+0x50>
+ 47e:	3e c0       	rjmp	.+124    	; 0x4fc <GPIO_WritePIN+0x92>
+	{
+		case PORT_A:
+		
+			if(GPIO_STATE_x == GPIO_STATE_HIGH)
+ 480:	41 30       	cpi	r20, 0x01	; 1
+ 482:	61 f4       	brne	.+24     	; 0x49c <GPIO_WritePIN+0x32>
+			{
+				// Set (1) to (PORT_REGISTER_A Register) (PORT_PIN_n) bit
+				PORT_REGISTER_A |=(1<<(PORT_PIN_n));
+ 484:	2b b3       	in	r18, 0x1b	; 27
+ 486:	81 e0       	ldi	r24, 0x01	; 1
+ 488:	90 e0       	ldi	r25, 0x00	; 0
+ 48a:	02 c0       	rjmp	.+4      	; 0x490 <GPIO_WritePIN+0x26>
+ 48c:	88 0f       	add	r24, r24
+ 48e:	99 1f       	adc	r25, r25
+ 490:	6a 95       	dec	r22
+ 492:	e2 f7       	brpl	.-8      	; 0x48c <GPIO_WritePIN+0x22>
+ 494:	82 2b       	or	r24, r18
+ 496:	8b bb       	out	0x1b, r24	; 27
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 498:	80 e0       	ldi	r24, 0x00	; 0
+ 49a:	08 95       	ret
+			if(GPIO_STATE_x == GPIO_STATE_HIGH)
+			{
+				// Set (1) to (PORT_REGISTER_A Register) (PORT_PIN_n) bit
+				PORT_REGISTER_A |=(1<<(PORT_PIN_n));
+			}
+			else if(GPIO_STATE_x == GPIO_STATE_LOW)
+ 49c:	41 11       	cpse	r20, r1
+ 49e:	30 c0       	rjmp	.+96     	; 0x500 <GPIO_WritePIN+0x96>
+			{
+				// Set (0) to (PORT_REGISTER_A Register) (PORT_PIN_n) bit
+				PORT_REGISTER_A &=~(1<<(PORT_PIN_n));
+ 4a0:	2b b3       	in	r18, 0x1b	; 27
+ 4a2:	81 e0       	ldi	r24, 0x01	; 1
+ 4a4:	90 e0       	ldi	r25, 0x00	; 0
+ 4a6:	02 c0       	rjmp	.+4      	; 0x4ac <GPIO_WritePIN+0x42>
+ 4a8:	88 0f       	add	r24, r24
+ 4aa:	99 1f       	adc	r25, r25
+ 4ac:	6a 95       	dec	r22
+ 4ae:	e2 f7       	brpl	.-8      	; 0x4a8 <GPIO_WritePIN+0x3e>
+ 4b0:	80 95       	com	r24
+ 4b2:	82 23       	and	r24, r18
+ 4b4:	8b bb       	out	0x1b, r24	; 27
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 4b6:	80 e0       	ldi	r24, 0x00	; 0
+ 4b8:	08 95       	ret
+			}
+			break;
+		
+		case PORT_B:
+		
+			if(GPIO_STATE_x == GPIO_STATE_HIGH)
+ 4ba:	41 30       	cpi	r20, 0x01	; 1
+ 4bc:	61 f4       	brne	.+24     	; 0x4d6 <GPIO_WritePIN+0x6c>
+			{
+				// Set (1) to (PORT_REGISTER_B Register) (PORT_PIN_n) bit
+				PORT_REGISTER_B |=(1<<(PORT_PIN_n));
+ 4be:	28 b3       	in	r18, 0x18	; 24
+ 4c0:	81 e0       	ldi	r24, 0x01	; 1
+ 4c2:	90 e0       	ldi	r25, 0x00	; 0
+ 4c4:	02 c0       	rjmp	.+4      	; 0x4ca <GPIO_WritePIN+0x60>
+ 4c6:	88 0f       	add	r24, r24
+ 4c8:	99 1f       	adc	r25, r25
+ 4ca:	6a 95       	dec	r22
+ 4cc:	e2 f7       	brpl	.-8      	; 0x4c6 <GPIO_WritePIN+0x5c>
+ 4ce:	82 2b       	or	r24, r18
+ 4d0:	88 bb       	out	0x18, r24	; 24
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 4d2:	80 e0       	ldi	r24, 0x00	; 0
+ 4d4:	08 95       	ret
+			if(GPIO_STATE_x == GPIO_STATE_HIGH)
+			{
+				// Set (1) to (PORT_REGISTER_B Register) (PORT_PIN_n) bit
+				PORT_REGISTER_B |=(1<<(PORT_PIN_n));
+			}
+			else if(GPIO_STATE_x == GPIO_STATE_LOW)
+ 4d6:	41 11       	cpse	r20, r1
+ 4d8:	15 c0       	rjmp	.+42     	; 0x504 <GPIO_WritePIN+0x9a>
+			{
+				// Set (0) to (PORT_REGISTER_B Register) (PORT_PIN_n) bit
+				PORT_REGISTER_B &=~(1<<(PORT_PIN_n));
+ 4da:	28 b3       	in	r18, 0x18	; 24
+ 4dc:	81 e0       	ldi	r24, 0x01	; 1
+ 4de:	90 e0       	ldi	r25, 0x00	; 0
+ 4e0:	02 c0       	rjmp	.+4      	; 0x4e6 <GPIO_WritePIN+0x7c>
+ 4e2:	88 0f       	add	r24, r24
+ 4e4:	99 1f       	adc	r25, r25
+ 4e6:	6a 95       	dec	r22
+ 4e8:	e2 f7       	brpl	.-8      	; 0x4e2 <GPIO_WritePIN+0x78>
+ 4ea:	80 95       	com	r24
+ 4ec:	82 23       	and	r24, r18
+ 4ee:	88 bb       	out	0x18, r24	; 24
+		
+			return GPIO_STATUS_ERROR_PORT;
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 4f0:	80 e0       	ldi	r24, 0x00	; 0
+ 4f2:	08 95       	ret
+ */
+tGPIO_STATUS_x GPIO_WritePIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n, tGPIO_STATE_x GPIO_STATE_x)
+{
+	/* GPIO_STATE_x ERROR Handling */
+	if(GPIO_STATE_x != GPIO_STATE_LOW && GPIO_STATE_x != GPIO_STATE_HIGH)
+		return GPIO_STATUS_ERROR_STATE;
+ 4f4:	84 e0       	ldi	r24, 0x04	; 4
+ 4f6:	08 95       	ret
+		
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+		return GPIO_STATUS_ERROR_PIN;
+ 4f8:	82 e0       	ldi	r24, 0x02	; 2
+ 4fa:	08 95       	ret
+			}
+			break;
+			
+		default:
+		
+			return GPIO_STATUS_ERROR_PORT;
+ 4fc:	81 e0       	ldi	r24, 0x01	; 1
+ 4fe:	08 95       	ret
+			break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 500:	80 e0       	ldi	r24, 0x00	; 0
+ 502:	08 95       	ret
+ 504:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 506:	08 95       	ret
+
+00000508 <GPIO_ReadPIN>:
+ *	@return tGPIO_STATE_x: 	GPIO_STATE_LOW, GPIO_STATE_HIGH, GPIO_STATE_UNDEFINED
+ */
+tGPIO_STATE_x GPIO_ReadPIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+ 508:	68 30       	cpi	r22, 0x08	; 8
+ 50a:	38 f5       	brcc	.+78     	; 0x55a <GPIO_ReadPIN+0x52>
+		return GPIO_STATE_UNDEFINED;
+
+	/* Read PORT PIN State */
+	switch(PORT_x)
+ 50c:	81 30       	cpi	r24, 0x01	; 1
+ 50e:	79 f0       	breq	.+30     	; 0x52e <GPIO_ReadPIN+0x26>
+ 510:	18 f0       	brcs	.+6      	; 0x518 <GPIO_ReadPIN+0x10>
+ 512:	82 30       	cpi	r24, 0x02	; 2
+ 514:	b9 f0       	breq	.+46     	; 0x544 <GPIO_ReadPIN+0x3c>
+ 516:	23 c0       	rjmp	.+70     	; 0x55e <GPIO_ReadPIN+0x56>
+	{
+		case PORT_A:
+				
+			if(PIN_REGISTER_A & (1<<PORT_PIN_n))
+ 518:	89 b3       	in	r24, 0x19	; 25
+ 51a:	90 e0       	ldi	r25, 0x00	; 0
+ 51c:	02 c0       	rjmp	.+4      	; 0x522 <GPIO_ReadPIN+0x1a>
+ 51e:	95 95       	asr	r25
+ 520:	87 95       	ror	r24
+ 522:	6a 95       	dec	r22
+ 524:	e2 f7       	brpl	.-8      	; 0x51e <GPIO_ReadPIN+0x16>
+ 526:	80 ff       	sbrs	r24, 0
+ 528:	1c c0       	rjmp	.+56     	; 0x562 <GPIO_ReadPIN+0x5a>
+			{
+				return GPIO_STATE_HIGH;
+ 52a:	81 e0       	ldi	r24, 0x01	; 1
+ 52c:	08 95       	ret
+				return GPIO_STATE_LOW;
+			}
+			break;
+		case PORT_B:
+					
+			if(PIN_REGISTER_B & (1<<PORT_PIN_n))
+ 52e:	86 b3       	in	r24, 0x16	; 22
+ 530:	90 e0       	ldi	r25, 0x00	; 0
+ 532:	02 c0       	rjmp	.+4      	; 0x538 <GPIO_ReadPIN+0x30>
+ 534:	95 95       	asr	r25
+ 536:	87 95       	ror	r24
+ 538:	6a 95       	dec	r22
+ 53a:	e2 f7       	brpl	.-8      	; 0x534 <GPIO_ReadPIN+0x2c>
+ 53c:	80 ff       	sbrs	r24, 0
+ 53e:	13 c0       	rjmp	.+38     	; 0x566 <GPIO_ReadPIN+0x5e>
+			{
+				return GPIO_STATE_HIGH;
+ 540:	81 e0       	ldi	r24, 0x01	; 1
+ 542:	08 95       	ret
+				return GPIO_STATE_LOW;
+			}
+			break;
+		case PORT_D:
+			
+			if(PIN_REGISTER_D & (1<<PORT_PIN_n))
+ 544:	80 b3       	in	r24, 0x10	; 16
+ 546:	90 e0       	ldi	r25, 0x00	; 0
+ 548:	02 c0       	rjmp	.+4      	; 0x54e <GPIO_ReadPIN+0x46>
+ 54a:	95 95       	asr	r25
+ 54c:	87 95       	ror	r24
+ 54e:	6a 95       	dec	r22
+ 550:	e2 f7       	brpl	.-8      	; 0x54a <GPIO_ReadPIN+0x42>
+ 552:	80 ff       	sbrs	r24, 0
+ 554:	0a c0       	rjmp	.+20     	; 0x56a <GPIO_ReadPIN+0x62>
+			{
+				return GPIO_STATE_HIGH;
+ 556:	81 e0       	ldi	r24, 0x01	; 1
+ 558:	08 95       	ret
+ */
+tGPIO_STATE_x GPIO_ReadPIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+		return GPIO_STATE_UNDEFINED;
+ 55a:	82 e0       	ldi	r24, 0x02	; 2
+ 55c:	08 95       	ret
+			}
+			break;
+			
+		default:
+		
+			return GPIO_STATE_UNDEFINED;
+ 55e:	82 e0       	ldi	r24, 0x02	; 2
+ 560:	08 95       	ret
+			{
+				return GPIO_STATE_HIGH;
+			}
+			else
+			{
+				return GPIO_STATE_LOW;
+ 562:	80 e0       	ldi	r24, 0x00	; 0
+ 564:	08 95       	ret
+			{
+				return GPIO_STATE_HIGH;
+			}
+			else
+			{
+				return GPIO_STATE_LOW;
+ 566:	80 e0       	ldi	r24, 0x00	; 0
+ 568:	08 95       	ret
+			{
+				return GPIO_STATE_HIGH;
+			}
+			else
+			{
+				return GPIO_STATE_LOW;
+ 56a:	80 e0       	ldi	r24, 0x00	; 0
+		default:
+		
+			return GPIO_STATE_UNDEFINED;
+			break;
+	}
+}
+ 56c:	08 95       	ret
+
+0000056e <GPIO_TogglePIN>:
+ *	@return tGPIO_STATUS_x: GPIO_STATUS_SUCCESS, GPIO_STATUS_ERROR_PORT, GPIO_STATUS_ERROR_PIN, GPIO_STATUS_ERROR_DIR, GPIO_STATUS_ERROR_STATE
+ */
+tGPIO_STATUS_x GPIO_TogglePIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+ 56e:	68 30       	cpi	r22, 0x08	; 8
+ 570:	e8 f4       	brcc	.+58     	; 0x5ac <GPIO_TogglePIN+0x3e>
+	return GPIO_STATUS_ERROR_PIN;
+	
+	/* Toggle PORT PIN State */
+	switch(PORT_x)
+ 572:	88 23       	and	r24, r24
+ 574:	19 f0       	breq	.+6      	; 0x57c <GPIO_TogglePIN+0xe>
+ 576:	81 30       	cpi	r24, 0x01	; 1
+ 578:	69 f0       	breq	.+26     	; 0x594 <GPIO_TogglePIN+0x26>
+ 57a:	1a c0       	rjmp	.+52     	; 0x5b0 <GPIO_TogglePIN+0x42>
+	{
+		case PORT_A:
+		
+		/* Toggle (PORT_REGISTER_A Register) (PORT_PIN_n) bit */
+		PORT_REGISTER_A ^= (1<<PORT_PIN_n);
+ 57c:	2b b3       	in	r18, 0x1b	; 27
+ 57e:	81 e0       	ldi	r24, 0x01	; 1
+ 580:	90 e0       	ldi	r25, 0x00	; 0
+ 582:	02 c0       	rjmp	.+4      	; 0x588 <GPIO_TogglePIN+0x1a>
+ 584:	88 0f       	add	r24, r24
+ 586:	99 1f       	adc	r25, r25
+ 588:	6a 95       	dec	r22
+ 58a:	e2 f7       	brpl	.-8      	; 0x584 <GPIO_TogglePIN+0x16>
+ 58c:	82 27       	eor	r24, r18
+ 58e:	8b bb       	out	0x1b, r24	; 27
+		
+		return GPIO_STATUS_ERROR_PORT;
+		break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 590:	80 e0       	ldi	r24, 0x00	; 0
+	{
+		case PORT_A:
+		
+		/* Toggle (PORT_REGISTER_A Register) (PORT_PIN_n) bit */
+		PORT_REGISTER_A ^= (1<<PORT_PIN_n);
+		break;
+ 592:	08 95       	ret
+		
+		case PORT_B:
+		
+		/* Toggle (PORT_REGISTER_A Register) (PORT_PIN_n) bit */
+		PORT_REGISTER_B ^= (1<<PORT_PIN_n);
+ 594:	28 b3       	in	r18, 0x18	; 24
+ 596:	81 e0       	ldi	r24, 0x01	; 1
+ 598:	90 e0       	ldi	r25, 0x00	; 0
+ 59a:	02 c0       	rjmp	.+4      	; 0x5a0 <GPIO_TogglePIN+0x32>
+ 59c:	88 0f       	add	r24, r24
+ 59e:	99 1f       	adc	r25, r25
+ 5a0:	6a 95       	dec	r22
+ 5a2:	e2 f7       	brpl	.-8      	; 0x59c <GPIO_TogglePIN+0x2e>
+ 5a4:	82 27       	eor	r24, r18
+ 5a6:	88 bb       	out	0x18, r24	; 24
+		
+		return GPIO_STATUS_ERROR_PORT;
+		break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 5a8:	80 e0       	ldi	r24, 0x00	; 0
+		
+		case PORT_B:
+		
+		/* Toggle (PORT_REGISTER_A Register) (PORT_PIN_n) bit */
+		PORT_REGISTER_B ^= (1<<PORT_PIN_n);
+		break;
+ 5aa:	08 95       	ret
+ */
+tGPIO_STATUS_x GPIO_TogglePIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n)
+{
+	/* PORT_PIN_n ERROR Handling*/
+	if(PORT_PIN_n < PORT_PIN_0 || PORT_PIN_n > PORT_PIN_7)
+	return GPIO_STATUS_ERROR_PIN;
+ 5ac:	82 e0       	ldi	r24, 0x02	; 2
+ 5ae:	08 95       	ret
+		PORT_REGISTER_B ^= (1<<PORT_PIN_n);
+		break;
+		
+		default:
+		
+		return GPIO_STATUS_ERROR_PORT;
+ 5b0:	81 e0       	ldi	r24, 0x01	; 1
+		break;
+	}
+	
+	return GPIO_STATUS_SUCCESS;
+ 5b2:	08 95       	ret
+
+000005b4 <Timer0_Init>:
+ *	@param: void 
+ */
+void Timer0_Stop(void)
+{
+	/* Stop Timer By Set Prescaler 0x00 */
+	TIMER_0_CONTROL_REGISTER = 0x00;
+ 5b4:	13 be       	out	0x33, r1	; 51
+ 5b6:	08 95       	ret
+
+000005b8 <Timer0_Start>:
+ 5b8:	81 e0       	ldi	r24, 0x01	; 1
+ 5ba:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <timeStatus>
+ 5be:	8d e3       	ldi	r24, 0x3D	; 61
+ 5c0:	82 bf       	out	0x32, r24	; 50
+ 5c2:	83 b7       	in	r24, 0x33	; 51
+ 5c4:	84 60       	ori	r24, 0x04	; 4
+ 5c6:	83 bf       	out	0x33, r24	; 51
+ 5c8:	08 b6       	in	r0, 0x38	; 56
+ 5ca:	00 fe       	sbrs	r0, 0
+ 5cc:	fd cf       	rjmp	.-6      	; 0x5c8 <Timer0_Start+0x10>
+ 5ce:	88 b7       	in	r24, 0x38	; 56
+ 5d0:	81 60       	ori	r24, 0x01	; 1
+ 5d2:	88 bf       	out	0x38, r24	; 56
+ 5d4:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <timeStatus>
+ 5d8:	08 95       	ret
+
+000005da <Timer0_getStatus>:
+ */
+tTIME_x Timer0_getStatus(void)
+{
+	/* Return Time elapsed Status */
+	return timeStatus;
+ 5da:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <timeStatus>
+ 5de:	08 95       	ret
+
+000005e0 <SWITCH_Init>:
+ */
+void SWITCH_Init(tSWITCH_x SWITCH_x)
+{
+	/* Initialize SWITCH_x */
+	
+	switch(SWITCH_x)
+ 5e0:	81 11       	cpse	r24, r1
+ 5e2:	04 c0       	rjmp	.+8      	; 0x5ec <SWITCH_Init+0xc>
+	{
+		case SWITCH_PEDESTRIANS:
+		BTN_Init(BTN_PEDESTRIANS_PORT, BTN_PEDESTRIANS_PIN);
+ 5e4:	62 e0       	ldi	r22, 0x02	; 2
+ 5e6:	82 e0       	ldi	r24, 0x02	; 2
+ 5e8:	0e 94 b8 01 	call	0x370	; 0x370 <BTN_Init>
+ 5ec:	08 95       	ret
+
+000005ee <SWITCH_GetState>:
+{
+	/* Return SWITCH_x State */
+	
+	tGPIO_STATE_x btnState = GPIO_STATE_LOW;
+	
+	switch(SWITCH_x)
+ 5ee:	81 11       	cpse	r24, r1
+ 5f0:	07 c0       	rjmp	.+14     	; 0x600 <SWITCH_GetState+0x12>
+	{
+		case SWITCH_PEDESTRIANS:
+
+		btnState = BTN_GetState(BTN_PEDESTRIANS_PORT, BTN_PEDESTRIANS_PIN);
+ 5f2:	62 e0       	ldi	r22, 0x02	; 2
+ 5f4:	82 e0       	ldi	r24, 0x02	; 2
+ 5f6:	0e 94 be 01 	call	0x37c	; 0x37c <BTN_GetState>
+
+		if(btnState == GPIO_STATE_LOW)
+ 5fa:	81 11       	cpse	r24, r1
+ 5fc:	03 c0       	rjmp	.+6      	; 0x604 <SWITCH_GetState+0x16>
+ 5fe:	08 95       	ret
+		{
+			return SWITCH_STATE_PRESSED;
+		}
+	}
+
+	return SWITCH_STATE_RELEASED;
+ 600:	80 e0       	ldi	r24, 0x00	; 0
+ 602:	08 95       	ret
+		{
+			return SWITCH_STATE_RELEASED;
+		}
+		else
+		{
+			return SWITCH_STATE_PRESSED;
+ 604:	81 e0       	ldi	r24, 0x01	; 1
+		}
+	}
+
+	return SWITCH_STATE_RELEASED;
+ 606:	08 95       	ret
+
+00000608 <DISPLAY_Init>:
+ *
+ *	@param tLED_x: LED_CARS_GREEN,LED_CARS_YELLOW,LED_CARS_RED,LED_PEDESTRIANS_GREEN,LED_PEDESTRIANS_YELLOW,LED_PEDESTRIANS_RED
+ *	@param tDISPLAY_STATE_x: DISPLAY_STATE_OFF, DISPLAY_STATE_ON,
+ */
+void DISPLAY_Init(tLED_x LED_x, tDISPLAY_STATE_x DISPLAY_STATE_x)
+{
+ 608:	cf 93       	push	r28
+ 60a:	c6 2f       	mov	r28, r22
+	/* Initialize LED_x with DISPLAY_STATE_x */
+	
+	switch(LED_x)
+ 60c:	82 30       	cpi	r24, 0x02	; 2
+ 60e:	01 f1       	breq	.+64     	; 0x650 <DISPLAY_Init+0x48>
+ 610:	28 f4       	brcc	.+10     	; 0x61c <DISPLAY_Init+0x14>
+ 612:	88 23       	and	r24, r24
+ 614:	49 f0       	breq	.+18     	; 0x628 <DISPLAY_Init+0x20>
+ 616:	81 30       	cpi	r24, 0x01	; 1
+ 618:	89 f0       	breq	.+34     	; 0x63c <DISPLAY_Init+0x34>
+ 61a:	41 c0       	rjmp	.+130    	; 0x69e <DISPLAY_Init+0x96>
+ 61c:	84 30       	cpi	r24, 0x04	; 4
+ 61e:	61 f1       	breq	.+88     	; 0x678 <DISPLAY_Init+0x70>
+ 620:	08 f1       	brcs	.+66     	; 0x664 <DISPLAY_Init+0x5c>
+ 622:	85 30       	cpi	r24, 0x05	; 5
+ 624:	99 f1       	breq	.+102    	; 0x68c <DISPLAY_Init+0x84>
+ 626:	3b c0       	rjmp	.+118    	; 0x69e <DISPLAY_Init+0x96>
+	{
+		case LED_CARS_GREEN:
+		LED_Init(CARS_LED_GREEN_PORT,CARS_LED_GREEN_PIN);
+ 628:	60 e0       	ldi	r22, 0x00	; 0
+ 62a:	80 e0       	ldi	r24, 0x00	; 0
+ 62c:	0e 94 a8 01 	call	0x350	; 0x350 <LED_Init>
+		LED_SetState(CARS_LED_GREEN_PORT,CARS_LED_GREEN_PIN,DISPLAY_STATE_x);
+ 630:	4c 2f       	mov	r20, r28
+ 632:	60 e0       	ldi	r22, 0x00	; 0
+ 634:	80 e0       	ldi	r24, 0x00	; 0
+ 636:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 63a:	31 c0       	rjmp	.+98     	; 0x69e <DISPLAY_Init+0x96>
+		
+		case LED_CARS_YELLOW:
+		LED_Init(CARS_LED_YELLOW_PORT,CARS_LED_YELLOW_PIN);
+ 63c:	61 e0       	ldi	r22, 0x01	; 1
+ 63e:	80 e0       	ldi	r24, 0x00	; 0
+ 640:	0e 94 a8 01 	call	0x350	; 0x350 <LED_Init>
+		LED_SetState(CARS_LED_YELLOW_PORT,CARS_LED_YELLOW_PIN,DISPLAY_STATE_x);
+ 644:	4c 2f       	mov	r20, r28
+ 646:	61 e0       	ldi	r22, 0x01	; 1
+ 648:	80 e0       	ldi	r24, 0x00	; 0
+ 64a:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 64e:	27 c0       	rjmp	.+78     	; 0x69e <DISPLAY_Init+0x96>
+		
+		case LED_CARS_RED:
+		LED_Init(CARS_LED_RED_PORT,CARS_LED_RED_PIN);
+ 650:	62 e0       	ldi	r22, 0x02	; 2
+ 652:	80 e0       	ldi	r24, 0x00	; 0
+ 654:	0e 94 a8 01 	call	0x350	; 0x350 <LED_Init>
+		LED_SetState(CARS_LED_RED_PORT,CARS_LED_RED_PIN,DISPLAY_STATE_x);
+ 658:	4c 2f       	mov	r20, r28
+ 65a:	62 e0       	ldi	r22, 0x02	; 2
+ 65c:	80 e0       	ldi	r24, 0x00	; 0
+ 65e:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 662:	1d c0       	rjmp	.+58     	; 0x69e <DISPLAY_Init+0x96>
+
+		case LED_PEDESTRIANS_GREEN:
+		LED_Init(PEDESTRIANS_LED_GREEN_PORT,PEDESTRIANS_LED_GREEN_PIN);
+ 664:	60 e0       	ldi	r22, 0x00	; 0
+ 666:	81 e0       	ldi	r24, 0x01	; 1
+ 668:	0e 94 a8 01 	call	0x350	; 0x350 <LED_Init>
+		LED_SetState(PEDESTRIANS_LED_GREEN_PORT,PEDESTRIANS_LED_GREEN_PIN,DISPLAY_STATE_x);
+ 66c:	4c 2f       	mov	r20, r28
+ 66e:	60 e0       	ldi	r22, 0x00	; 0
+ 670:	81 e0       	ldi	r24, 0x01	; 1
+ 672:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 676:	13 c0       	rjmp	.+38     	; 0x69e <DISPLAY_Init+0x96>
+		
+		case LED_PEDESTRIANS_YELLOW:
+		LED_Init(PEDESTRIANS_LED_YELLOW_PORT,PEDESTRIANS_LED_YELLOW_PIN);
+ 678:	61 e0       	ldi	r22, 0x01	; 1
+ 67a:	81 e0       	ldi	r24, 0x01	; 1
+ 67c:	0e 94 a8 01 	call	0x350	; 0x350 <LED_Init>
+		LED_SetState(PEDESTRIANS_LED_YELLOW_PORT,PEDESTRIANS_LED_YELLOW_PIN,DISPLAY_STATE_x);
+ 680:	4c 2f       	mov	r20, r28
+ 682:	61 e0       	ldi	r22, 0x01	; 1
+ 684:	81 e0       	ldi	r24, 0x01	; 1
+ 686:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 68a:	09 c0       	rjmp	.+18     	; 0x69e <DISPLAY_Init+0x96>
+		
+		case LED_PEDESTRIANS_RED:
+		LED_Init(PEDESTRIANS_LED_RED_PORT,PEDESTRIANS_LED_RED_PIN);
+ 68c:	62 e0       	ldi	r22, 0x02	; 2
+ 68e:	81 e0       	ldi	r24, 0x01	; 1
+ 690:	0e 94 a8 01 	call	0x350	; 0x350 <LED_Init>
+		LED_SetState(PEDESTRIANS_LED_RED_PORT,PEDESTRIANS_LED_RED_PIN,DISPLAY_STATE_x);
+ 694:	4c 2f       	mov	r20, r28
+ 696:	62 e0       	ldi	r22, 0x02	; 2
+ 698:	81 e0       	ldi	r24, 0x01	; 1
+ 69a:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+	}
+}
+ 69e:	cf 91       	pop	r28
+ 6a0:	08 95       	ret
+
+000006a2 <DISPLAY_SetState>:
+ */
+void DISPLAY_SetState(tLED_x LED_x, tDISPLAY_STATE_x DISPLAY_STATE_x)
+{
+	/* Set LED_x State with DISPLAY_STATE_x */
+	
+	switch(LED_x)
+ 6a2:	82 30       	cpi	r24, 0x02	; 2
+ 6a4:	c1 f0       	breq	.+48     	; 0x6d6 <DISPLAY_SetState+0x34>
+ 6a6:	28 f4       	brcc	.+10     	; 0x6b2 <DISPLAY_SetState+0x10>
+ 6a8:	88 23       	and	r24, r24
+ 6aa:	49 f0       	breq	.+18     	; 0x6be <DISPLAY_SetState+0x1c>
+ 6ac:	81 30       	cpi	r24, 0x01	; 1
+ 6ae:	69 f0       	breq	.+26     	; 0x6ca <DISPLAY_SetState+0x28>
+ 6b0:	08 95       	ret
+ 6b2:	84 30       	cpi	r24, 0x04	; 4
+ 6b4:	e1 f0       	breq	.+56     	; 0x6ee <DISPLAY_SetState+0x4c>
+ 6b6:	a8 f0       	brcs	.+42     	; 0x6e2 <DISPLAY_SetState+0x40>
+ 6b8:	85 30       	cpi	r24, 0x05	; 5
+ 6ba:	f9 f0       	breq	.+62     	; 0x6fa <DISPLAY_SetState+0x58>
+ 6bc:	08 95       	ret
+	{
+		case LED_CARS_GREEN:
+		LED_SetState(CARS_LED_GREEN_PORT,CARS_LED_GREEN_PIN,DISPLAY_STATE_x);
+ 6be:	46 2f       	mov	r20, r22
+ 6c0:	60 e0       	ldi	r22, 0x00	; 0
+ 6c2:	80 e0       	ldi	r24, 0x00	; 0
+ 6c4:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 6c8:	08 95       	ret
+		
+		case LED_CARS_YELLOW:
+		LED_SetState(CARS_LED_YELLOW_PORT,CARS_LED_YELLOW_PIN,DISPLAY_STATE_x);
+ 6ca:	46 2f       	mov	r20, r22
+ 6cc:	61 e0       	ldi	r22, 0x01	; 1
+ 6ce:	80 e0       	ldi	r24, 0x00	; 0
+ 6d0:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 6d4:	08 95       	ret
+		
+		case LED_CARS_RED:
+		LED_SetState(CARS_LED_RED_PORT,CARS_LED_RED_PIN,DISPLAY_STATE_x);
+ 6d6:	46 2f       	mov	r20, r22
+ 6d8:	62 e0       	ldi	r22, 0x02	; 2
+ 6da:	80 e0       	ldi	r24, 0x00	; 0
+ 6dc:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 6e0:	08 95       	ret
+		
+		case LED_PEDESTRIANS_GREEN:
+		LED_SetState(PEDESTRIANS_LED_GREEN_PORT,PEDESTRIANS_LED_GREEN_PIN,DISPLAY_STATE_x);
+ 6e2:	46 2f       	mov	r20, r22
+ 6e4:	60 e0       	ldi	r22, 0x00	; 0
+ 6e6:	81 e0       	ldi	r24, 0x01	; 1
+ 6e8:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 6ec:	08 95       	ret
+		
+		case LED_PEDESTRIANS_YELLOW:
+		LED_SetState(PEDESTRIANS_LED_YELLOW_PORT,PEDESTRIANS_LED_YELLOW_PIN,DISPLAY_STATE_x);
+ 6ee:	46 2f       	mov	r20, r22
+ 6f0:	61 e0       	ldi	r22, 0x01	; 1
+ 6f2:	81 e0       	ldi	r24, 0x01	; 1
+ 6f4:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+		break;
+ 6f8:	08 95       	ret
+		
+		case LED_PEDESTRIANS_RED:
+		LED_SetState(PEDESTRIANS_LED_RED_PORT,PEDESTRIANS_LED_RED_PIN,DISPLAY_STATE_x);
+ 6fa:	46 2f       	mov	r20, r22
+ 6fc:	62 e0       	ldi	r22, 0x02	; 2
+ 6fe:	81 e0       	ldi	r24, 0x01	; 1
+ 700:	0e 94 ae 01 	call	0x35c	; 0x35c <LED_SetState>
+ 704:	08 95       	ret
+
+00000706 <DISPLAY_Toggle>:
+ */
+void DISPLAY_Toggle(tLED_x LED_x)
+{
+	/* Toggle LED_x State */
+	
+	switch(LED_x)
+ 706:	82 30       	cpi	r24, 0x02	; 2
+ 708:	b1 f0       	breq	.+44     	; 0x736 <DISPLAY_Toggle+0x30>
+ 70a:	28 f4       	brcc	.+10     	; 0x716 <DISPLAY_Toggle+0x10>
+ 70c:	88 23       	and	r24, r24
+ 70e:	49 f0       	breq	.+18     	; 0x722 <DISPLAY_Toggle+0x1c>
+ 710:	81 30       	cpi	r24, 0x01	; 1
+ 712:	61 f0       	breq	.+24     	; 0x72c <DISPLAY_Toggle+0x26>
+ 714:	08 95       	ret
+ 716:	84 30       	cpi	r24, 0x04	; 4
+ 718:	c1 f0       	breq	.+48     	; 0x74a <DISPLAY_Toggle+0x44>
+ 71a:	90 f0       	brcs	.+36     	; 0x740 <DISPLAY_Toggle+0x3a>
+ 71c:	85 30       	cpi	r24, 0x05	; 5
+ 71e:	d1 f0       	breq	.+52     	; 0x754 <DISPLAY_Toggle+0x4e>
+ 720:	08 95       	ret
+	{
+		case LED_CARS_GREEN:
+		LED_Toggle(CARS_LED_GREEN_PORT, CARS_LED_GREEN_PIN);
+ 722:	60 e0       	ldi	r22, 0x00	; 0
+ 724:	80 e0       	ldi	r24, 0x00	; 0
+ 726:	0e 94 b3 01 	call	0x366	; 0x366 <LED_Toggle>
+		break;
+ 72a:	08 95       	ret
+		
+		case LED_CARS_YELLOW:
+		LED_Toggle(CARS_LED_YELLOW_PORT, CARS_LED_YELLOW_PIN);
+ 72c:	61 e0       	ldi	r22, 0x01	; 1
+ 72e:	80 e0       	ldi	r24, 0x00	; 0
+ 730:	0e 94 b3 01 	call	0x366	; 0x366 <LED_Toggle>
+		break;
+ 734:	08 95       	ret
+		
+		case LED_CARS_RED:
+		LED_Toggle(CARS_LED_RED_PORT, CARS_LED_RED_PIN);
+ 736:	62 e0       	ldi	r22, 0x02	; 2
+ 738:	80 e0       	ldi	r24, 0x00	; 0
+ 73a:	0e 94 b3 01 	call	0x366	; 0x366 <LED_Toggle>
+		break;
+ 73e:	08 95       	ret
+		
+		case LED_PEDESTRIANS_GREEN:
+		LED_Toggle(PEDESTRIANS_LED_GREEN_PORT, PEDESTRIANS_LED_GREEN_PIN);
+ 740:	60 e0       	ldi	r22, 0x00	; 0
+ 742:	81 e0       	ldi	r24, 0x01	; 1
+ 744:	0e 94 b3 01 	call	0x366	; 0x366 <LED_Toggle>
+		break;
+ 748:	08 95       	ret
+		
+		case LED_PEDESTRIANS_YELLOW:
+		LED_Toggle(PEDESTRIANS_LED_YELLOW_PORT, PEDESTRIANS_LED_YELLOW_PIN);
+ 74a:	61 e0       	ldi	r22, 0x01	; 1
+ 74c:	81 e0       	ldi	r24, 0x01	; 1
+ 74e:	0e 94 b3 01 	call	0x366	; 0x366 <LED_Toggle>
+		break;
+ 752:	08 95       	ret
+		
+		case LED_PEDESTRIANS_RED:
+		LED_Toggle(PEDESTRIANS_LED_RED_PORT, PEDESTRIANS_LED_RED_PIN);
+ 754:	62 e0       	ldi	r22, 0x02	; 2
+ 756:	81 e0       	ldi	r24, 0x01	; 1
+ 758:	0e 94 b3 01 	call	0x366	; 0x366 <LED_Toggle>
+ 75c:	08 95       	ret
+
+0000075e <DISPLAY_ON>:
+ *	@param tLED_x: LED_CARS_GREEN,LED_CARS_YELLOW,LED_CARS_RED,LED_PEDESTRIANS_GREEN,LED_PEDESTRIANS_YELLOW,LED_PEDESTRIANS_RED
+ */
+void DISPLAY_ON(tLED_x LED_x)
+{
+	/* Set LED_x State On */
+	DISPLAY_SetState(LED_x,DISPLAY_STATE_ON);
+ 75e:	61 e0       	ldi	r22, 0x01	; 1
+ 760:	0e 94 51 03 	call	0x6a2	; 0x6a2 <DISPLAY_SetState>
+ 764:	08 95       	ret
+
+00000766 <DISPLAY_OFF>:
+ *	@param tLED_x: LED_CARS_GREEN,LED_CARS_YELLOW,LED_CARS_RED,LED_PEDESTRIANS_GREEN,LED_PEDESTRIANS_YELLOW,LED_PEDESTRIANS_RED
+ */
+void DISPLAY_OFF(tLED_x LED_x)
+{
+	/* Set LED_x State Off */
+	DISPLAY_SetState(LED_x,DISPLAY_STATE_OFF);
+ 766:	60 e0       	ldi	r22, 0x00	; 0
+ 768:	0e 94 51 03 	call	0x6a2	; 0x6a2 <DISPLAY_SetState>
+ 76c:	08 95       	ret
+
+0000076e <TIME_Init>:
+ *	@param: void
+ */
+void TIME_Init(void)
+{
+	/* Initialize Timer0 */
+	Timer0_Init();
+ 76e:	0e 94 da 02 	call	0x5b4	; 0x5b4 <Timer0_Init>
+ 772:	08 95       	ret
+
+00000774 <TIME_Update>:
+ *	@param: void
+ */
+void TIME_Update(void)
+{	
+	/* Start Timer */
+	Timer0_Start();
+ 774:	0e 94 dc 02 	call	0x5b8	; 0x5b8 <Timer0_Start>
+	
+	/* Check if 50ms elapsed */
+	if(Timer0_getStatus() == TIME_ELAPSED)
+ 778:	0e 94 ed 02 	call	0x5da	; 0x5da <Timer0_getStatus>
+ 77c:	81 11       	cpse	r24, r1
+ 77e:	09 c0       	rjmp	.+18     	; 0x792 <TIME_Update+0x1e>
+	{		
+		/* Increment timeInMilliSeconds with 50ms */
+		timeInMilliSeconds += 50;
+ 780:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <timeInMilliSeconds>
+ 784:	90 91 6c 00 	lds	r25, 0x006C	; 0x80006c <timeInMilliSeconds+0x1>
+ 788:	c2 96       	adiw	r24, 0x32	; 50
+ 78a:	90 93 6c 00 	sts	0x006C, r25	; 0x80006c <timeInMilliSeconds+0x1>
+ 78e:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <timeInMilliSeconds>
+	}
+	
+	/* Check if 1000ms elapsed */
+	if(timeInMilliSeconds == 1000)
+ 792:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <timeInMilliSeconds>
+ 796:	90 91 6c 00 	lds	r25, 0x006C	; 0x80006c <timeInMilliSeconds+0x1>
+ 79a:	88 3e       	cpi	r24, 0xE8	; 232
+ 79c:	93 40       	sbci	r25, 0x03	; 3
+ 79e:	29 f4       	brne	.+10     	; 0x7aa <TIME_Update+0x36>
+	{
+		/* Increment timeInMilliSeconds with 1s */
+		timeInSeconds++;		
+ 7a0:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <timeInSeconds>
+ 7a4:	8f 5f       	subi	r24, 0xFF	; 255
+ 7a6:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <timeInSeconds>
+	}
+	
+	/* Check if 5 Sec is elapsed */
+	if(timeInSeconds > FIVE_SECOND)
+ 7aa:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <timeInSeconds>
+ 7ae:	86 30       	cpi	r24, 0x06	; 6
+ 7b0:	18 f0       	brcs	.+6      	; 0x7b8 <TIME_Update+0x44>
+	{
+		timeInSeconds = 1;
+ 7b2:	81 e0       	ldi	r24, 0x01	; 1
+ 7b4:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <timeInSeconds>
+ 7b8:	08 95       	ret
+
+000007ba <TIME_OneSecondElapsed>:
+ *	@return: ONE_SECOND, COUNTING
+ */
+uint8_t TIME_OneSecondElapsed(void)
+{
+	/* Check if timeInMilliSeconds reached 1000ms */
+	if(timeInMilliSeconds == 1000)
+ 7ba:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <timeInMilliSeconds>
+ 7be:	90 91 6c 00 	lds	r25, 0x006C	; 0x80006c <timeInMilliSeconds+0x1>
+ 7c2:	88 3e       	cpi	r24, 0xE8	; 232
+ 7c4:	93 40       	sbci	r25, 0x03	; 3
+ 7c6:	31 f4       	brne	.+12     	; 0x7d4 <TIME_OneSecondElapsed+0x1a>
+	{					
+		timeInMilliSeconds = 0;
+ 7c8:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <timeInMilliSeconds+0x1>
+ 7cc:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <timeInMilliSeconds>
+		return ONE_SECOND;
+ 7d0:	81 e0       	ldi	r24, 0x01	; 1
+ 7d2:	08 95       	ret
+	}
+	else
+	{
+		return COUNTING;
+ 7d4:	80 e0       	ldi	r24, 0x00	; 0
+	}
+}
+ 7d6:	08 95       	ret
+
+000007d8 <TIME_SecondsElapsed>:
+ *	@return timeInSeconds: uint8_t value elapsed
+ */
+uint8_t TIME_SecondsElapsed(void)
+{
+	return timeInSeconds;
+}
+ 7d8:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <timeInSeconds>
+ 7dc:	08 95       	ret
+
+000007de <TIME_ResetSeconds>:
+ *
+ *	@param void
+ */
+void TIME_ResetSeconds(void)
+{
+	timeInSeconds = 0;
+ 7de:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <timeInSeconds>
+ 7e2:	08 95       	ret
+
+000007e4 <_exit>:
+ 7e4:	f8 94       	cli
+
+000007e6 <__stop_program>:
+ 7e6:	ff cf       	rjmp	.-2      	; 0x7e6 <__stop_program>

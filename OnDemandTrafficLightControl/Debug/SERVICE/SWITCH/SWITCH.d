@@ -1,0 +1,25 @@
+SERVICE/SWITCH/SWITCH.d SERVICE/SWITCH/SWITCH.o: \
+ ../SERVICE/SWITCH/SWITCH.c ../SERVICE/SWITCH/SWITCH.h \
+ ../SERVICE/SWITCH/../../MCAL/GPIO/GPIO.h \
+ ../SERVICE/SWITCH/../../MCAL/GPIO/../registers.h \
+ ../SERVICE/SWITCH/../../MCAL/GPIO/../../Utilities/types.h \
+ ../SERVICE/SWITCH/../../MCAL/GPIO/../port.h \
+ ../SERVICE/SWITCH/../../MCAL/GPIO/../registers.h \
+ ../SERVICE/SWITCH/../../ECUAL/BUTTON/BUTTON.h \
+ ../SERVICE/SWITCH/../../ECUAL/BUTTON/../../MCAL/GPIO/GPIO.h
+
+../SERVICE/SWITCH/SWITCH.h:
+
+../SERVICE/SWITCH/../../MCAL/GPIO/GPIO.h:
+
+../SERVICE/SWITCH/../../MCAL/GPIO/../registers.h:
+
+../SERVICE/SWITCH/../../MCAL/GPIO/../../Utilities/types.h:
+
+../SERVICE/SWITCH/../../MCAL/GPIO/../port.h:
+
+../SERVICE/SWITCH/../../MCAL/GPIO/../registers.h:
+
+../SERVICE/SWITCH/../../ECUAL/BUTTON/BUTTON.h:
+
+../SERVICE/SWITCH/../../ECUAL/BUTTON/../../MCAL/GPIO/GPIO.h:

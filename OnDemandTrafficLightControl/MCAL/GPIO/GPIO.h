@@ -1,0 +1,98 @@
+/*
+ * GPIO.h
+ *
+ * Created: 9/14/2022 6:08:25 AM
+ *  Author: MohamedSalah
+ */ 
+
+#ifndef GPIO_H_
+#define GPIO_H_
+
+#include "../registers.h"
+#include "../port.h"
+
+typedef enum
+{
+	GPIO_STATE_LOW,
+	GPIO_STATE_HIGH,
+	GPIO_STATE_UNDEFINED
+}tGPIO_STATE_x;
+
+typedef enum
+{
+	GPIO_DIR_INPUT,
+	GPIO_DIR_OUTPUT,
+}tGPIO_DIR_x;
+
+typedef enum
+{
+	PORT_PIN_0,
+	PORT_PIN_1,
+	PORT_PIN_2,
+	PORT_PIN_3,
+	PORT_PIN_4,
+	PORT_PIN_5,
+	PORT_PIN_6,
+	PORT_PIN_7,
+}tPORT_PIN_n;
+
+typedef enum
+{
+	GPIO_STATUS_SUCCESS,
+	GPIO_STATUS_ERROR_PORT,
+	GPIO_STATUS_ERROR_PIN,
+	GPIO_STATUS_ERROR_DIR,
+	GPIO_STATUS_ERROR_STATE
+}tGPIO_STATUS_x;
+
+/*
+ * Function: GPIO_InitPin
+ * ----------------------------
+ *	Initialize PORT PIN as GPIO_DIR_x
+ *
+ *	@param PORT_x: PORT_A, PORT_B, PORT_D
+ *	@param PORT_PIN_n: PORT_PIN_0, PORT_PIN_1, PORT_PIN_2, PORT_PIN_3, PORT_PIN_4, PORT_PIN_5, PORT_PIN_6, PORT_PIN_7
+ *	@param GPIO_DIR_x: GPIO_DIR_INPUT, GPIO_DIR_OUTPUT
+ *
+ *	@return tGPIO_STATUS_x: GPIO_STATUS_SUCCESS, GPIO_STATUS_ERROR_PORT, GPIO_STATUS_ERROR_PIN, GPIO_STATUS_ERROR_DIR, GPIO_STATUS_ERROR_STATE
+ */
+tGPIO_STATUS_x GPIO_InitPin(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n, tGPIO_DIR_x GPIO_DIR_x);
+
+/*
+ * Function: GPIO_WritePIN
+ * ----------------------------
+ *	Set PORT PIN as GPIO_STATE_x
+ *
+ *	@param PORT_x: PORT_A, PORT_B, PORT_D
+ *	@param PORT_PIN_n: PORT_PIN_0, PORT_PIN_1, PORT_PIN_2, PORT_PIN_3, PORT_PIN_4, PORT_PIN_5, PORT_PIN_6, PORT_PIN_7
+ *	@param GPIO_STATE_x: GPIO_STATE_LOW, GPIO_STATE_HIGH
+ *
+ *	@return tGPIO_STATUS_x: GPIO_STATUS_SUCCESS, GPIO_STATUS_ERROR_PORT, GPIO_STATUS_ERROR_PIN, GPIO_STATUS_ERROR_DIR, GPIO_STATUS_ERROR_STATE
+ */
+tGPIO_STATUS_x GPIO_WritePIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n, tGPIO_STATE_x GPIO_STATE_x);
+
+/*
+ * Function: GPIO_ReadPIN
+ * ----------------------------
+ *	Read PORT PIN State
+ *
+ *	@param PORT_x: PORT_A, PORT_B, PORT_D
+ *	@param PORT_PIN_n: PORT_PIN_0, PORT_PIN_1, PORT_PIN_2, PORT_PIN_3, PORT_PIN_4, PORT_PIN_5, PORT_PIN_6, PORT_PIN_7
+ *
+ *	@return tGPIO_STATE_x: 	GPIO_STATE_LOW, GPIO_STATE_HIGH, GPIO_STATE_UNDEFINED
+ */
+tGPIO_STATE_x GPIO_ReadPIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n);
+
+/*
+ * Function: GPIO_TogglePIN
+ * ----------------------------
+ *	Toggle PORT PIN State
+ *
+ *	@param PORT_x: PORT_A, PORT_B, PORT_D
+ *	@param PORT_PIN_n: PORT_PIN_0, PORT_PIN_1, PORT_PIN_2, PORT_PIN_3, PORT_PIN_4, PORT_PIN_5, PORT_PIN_6, PORT_PIN_7
+ *
+ *	@return tGPIO_STATUS_x: GPIO_STATUS_SUCCESS, GPIO_STATUS_ERROR_PORT, GPIO_STATUS_ERROR_PIN, GPIO_STATUS_ERROR_DIR, GPIO_STATUS_ERROR_STATE
+ */
+tGPIO_STATUS_x GPIO_TogglePIN(tPORT_x PORT_x, tPORT_PIN_n PORT_PIN_n);
+
+#endif /* GPIO_H_ */
